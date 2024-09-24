@@ -1,22 +1,35 @@
-import { Container } from "@mui/material";
-import CustomerPointsList from "./customerPointsList";
-import PointsDashboard from "./pointsSection";
-import WelcomeCard from "./welcomCard";
+import { Box, Container } from "@mui/material";
+import PointsSection from "./pointsSection";
 import TextPromotion from "./textPromotion";
+import { useState } from "react";
+import Sidebar from "./sidebar";
+import CustomerPointsList from "./customerPointsList";
 
 export default function Dashboard() {
+  const [selectedComponent, setSelectedComponent] =
+    useState<string>("Dashboard");
+
+  const renderComponent = () => {
+    switch (selectedComponent) {
+      case "Transactions":
+        return <TextPromotion />;
+      case "Customers":
+        return <CustomerPointsList />;
+      case "textPromotion":
+        return <TextPromotion />;
+      default:
+        return <PointsSection />;
+    }
+  };
   return (
-    <Container
-      sx={{
-        padding: 3,
-        maxWidth: "800px",
-        margin: "0 auto",
-      }}
-    >
-      <WelcomeCard />
-      <PointsDashboard />
-      <CustomerPointsList />
-      <TextPromotion />
-    </Container>
+    <>
+      <Sidebar
+        onSelect={setSelectedComponent}
+        selectedComponent={selectedComponent}
+      />
+      <Box component="main">
+        <Container>{renderComponent()}</Container>
+      </Box>
+    </>
   );
 }

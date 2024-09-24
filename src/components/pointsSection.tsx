@@ -1,23 +1,24 @@
 // src/components/PointsDashboard.tsx
 
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../redux/store";
 import { setPoints } from "../redux/slices/pointsSlice";
 import { Box, Typography, Paper, Grid2 } from "@mui/material";
+import WelcomeCard from "./welcomCard";
 
-const PointsDashboard: React.FC = () => {
+export default function PointsSection() {
   const dispatch = useDispatch();
-  const { todayPoints, last7DaysPoints, last30DaysPoints } = useSelector(
-    (state: RootState) => state.points
-  );
+  const { todayPoints, last7DaysPoints, last30DaysPoints, redeemedPoints } =
+    useSelector((state: RootState) => state.points);
 
   useEffect(() => {
     const fetchPointsData = async () => {
       const pointsData = {
         todayPoints: 100, // Assume 100 points earned today
-        last7DaysPoints: 500, // 500 points in the last 7 days
-        last30DaysPoints: 2000, // 2000 points in the last 30 days
+        last7DaysPoints: 300, // 500 points in the last 7 days
+        last30DaysPoints: 500, // 2000 points in the last 30 days
+        redeemedPoints: 900, // 1000 points redeemed
       };
 
       dispatch(setPoints(pointsData));
@@ -33,10 +34,10 @@ const PointsDashboard: React.FC = () => {
         flexDirection: "column",
         gap: 4,
         padding: 3,
-        maxWidth: "800px",
         margin: "0 auto",
       }}
     >
+      <WelcomeCard />
       <Typography
         variant="h4"
         component="div"
@@ -56,6 +57,8 @@ const PointsDashboard: React.FC = () => {
               textAlign: "center",
               backgroundColor: "#f5f5f5",
               transition: "0.3s",
+              borderRadius: "20px",
+
               "&:hover": {
                 backgroundColor: "#e3f2fd",
                 transform: "translateY(-5px)",
@@ -84,6 +87,7 @@ const PointsDashboard: React.FC = () => {
               textAlign: "center",
               backgroundColor: "#f5f5f5",
               transition: "0.3s",
+              borderRadius: "20px",
               "&:hover": {
                 backgroundColor: "#fce4ec",
                 transform: "translateY(-5px)",
@@ -110,6 +114,7 @@ const PointsDashboard: React.FC = () => {
               textAlign: "center",
               backgroundColor: "#f5f5f5",
               transition: "0.3s",
+              borderRadius: "20px",
               "&:hover": {
                 backgroundColor: "#f3e5f5",
                 transform: "translateY(-5px)",
@@ -128,9 +133,34 @@ const PointsDashboard: React.FC = () => {
             </Typography>
           </Paper>
         </Grid2>
+        <Grid2>
+          <Paper
+            elevation={6}
+            sx={{
+              padding: 4,
+              textAlign: "center",
+              backgroundColor: "#f5f5f5",
+              transition: "0.3s",
+              borderRadius: "20px",
+              "&:hover": {
+                backgroundColor: "#f0f4c3",
+                transform: "translateY(-5px)",
+                boxShadow: "0 6px 12px rgba(0, 0, 0, 0.2)",
+              },
+            }}
+          >
+            <Typography sx={{ color: "#3e2723", fontWeight: "medium" }}>
+              Redeemed Points
+            </Typography>
+            <Typography
+              variant="h3"
+              sx={{ color: "#8d6e63", fontWeight: "bold" }}
+            >
+              {redeemedPoints}
+            </Typography>
+          </Paper>
+        </Grid2>
       </Grid2>
     </Box>
   );
-};
-
-export default PointsDashboard;
+}

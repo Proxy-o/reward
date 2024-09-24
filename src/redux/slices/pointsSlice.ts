@@ -7,12 +7,14 @@ interface PointsState {
   todayPoints: number;
   last7DaysPoints: number;
   last30DaysPoints: number;
+  redeemedPoints: number;
 }
 
 const initialState: PointsState = {
   todayPoints: 0,
   last7DaysPoints: 0,
   last30DaysPoints: 0,
+  redeemedPoints: 0,
 };
 
 const pointsSlice = createSlice({
@@ -23,6 +25,7 @@ const pointsSlice = createSlice({
       state.todayPoints = action.payload.todayPoints;
       state.last7DaysPoints = action.payload.last7DaysPoints;
       state.last30DaysPoints = action.payload.last30DaysPoints;
+      state.redeemedPoints = action.payload.redeemedPoints;
     },
   },
 });
