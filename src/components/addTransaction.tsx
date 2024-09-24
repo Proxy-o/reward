@@ -2,6 +2,9 @@
 import React, { useState } from "react";
 import { Modal, Box, Typography, TextField, Button } from "@mui/material";
 import { User } from "../types/User";
+import headers from "../types/header";
+import { useAppDispatch } from "../redux/store";
+import { setPointsForUser } from "../redux/slices/userSlice";
 
 const modalStyle = {
   position: "absolute",
@@ -30,11 +33,26 @@ const AddTransactionModal: React.FC<AddTransactionModalProps> = ({
     null
   );
 
-  const handleAddTransaction = () => {
+  const dispatch = useAppDispatch();
+
+  const handleAddTransaction = async () => {
+    // Add transaction logic here
+    fetch(import.meta.env.VITE_BACKEND_URL + "transactions", {
+      method: "POST",
+      headers: headers,
+      body: JSON.stringify({
+        id: selectedUser?.id,
+        points: transactionAmount,
+      }),
+    });
     if (transactionAmount !== null) {
       setTransactionAmount(null);
       handleClose();
     }
+    // set points for user
+    dispatch(
+      setPointsForUser({ id: selectedUser?.id, points: transactionAmount })
+    );
   };
 
   return (

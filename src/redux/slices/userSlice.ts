@@ -19,7 +19,16 @@ const initialState: UserState = {
 const userSlice = createSlice({
   name: "users",
   initialState,
-  reducers: {},
+  reducers: {
+    // Add reducers here
+    setPointsForUser: (state, action) => {
+      const { id, points } = action.payload;
+      const user = state.users.find((user) => user.id === id);
+      if (user) {
+        user.pointsToday += points;
+      }
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchUsers.pending, (state) => {
@@ -36,5 +45,7 @@ const userSlice = createSlice({
       });
   },
 });
+
+export const { setPointsForUser } = userSlice.actions;
 
 export default userSlice.reducer;
