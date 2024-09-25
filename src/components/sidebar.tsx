@@ -43,6 +43,12 @@ export default function Sidebar({ onSelect, selectedComponent }: SidebarProps) {
           <ListItemText primary="Send promotion" />
         </ListItemButton>
         <ListItemButton
+          onClick={() => handleSelect("AddCustomer")}
+          selected={selectedComponent === "AddCustomer"}
+        >
+          <ListItemText primary="Add Customer" />
+        </ListItemButton>
+        <ListItemButton
           onClick={() => handleSelect("Logout")}
           sx={{
             backgroundColor: "#003459",

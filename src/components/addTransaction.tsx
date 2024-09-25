@@ -36,7 +36,6 @@ const AddTransactionModal: React.FC<AddTransactionModalProps> = ({
   const dispatch = useAppDispatch();
 
   const handleAddTransaction = async () => {
-    // Add transaction logic here
     fetch(import.meta.env.VITE_BACKEND_URL + "transactions", {
       method: "POST",
       headers: headers,

@@ -11,23 +11,24 @@ import {
   InputLabel,
   FormControl,
 } from "@mui/material";
+import { useEffect } from "react";
+import { useSelector } from "react-redux";
+import { RootState, useAppDispatch } from "../redux/store";
+import { fetchUsers } from "../redux/actions/userActions";
 
 export default function TextPromotion() {
   const [selectedCustomer, setSelectedCustomer] = useState("");
   const [message, setMessage] = useState("");
+  const dispatch = useAppDispatch();
+  const { users } = useSelector((state: RootState) => state.users);
 
-  // Sample list of customers (this can be dynamically loaded later)
-  const customers = [
-    "Rachel Green",
-    "Ross Geller",
-    "Monica Geller",
-    "Chandler Bing",
-    "Joey Tribbiani",
-    "Phoebe Buffay",
-  ];
+  useEffect(() => {
+    if (users.length === 0) {
+      dispatch(fetchUsers());
+    }
+  }, [dispatch, users.length]);
 
   const handleSendPromotion = () => {
-    // Simulate sending a promotion (UI Only)
     alert(`Promotion sent to ${selectedCustomer} with message: "${message}"`);
     setMessage("");
   };
@@ -50,9 +51,9 @@ export default function TextPromotion() {
           onChange={(e) => setSelectedCustomer(e.target.value)}
           label="Choose Customer"
         >
-          {customers.map((customer, index) => (
-            <MenuItem key={index} value={customer}>
-              {customer}
+          {users.map((user, index) => (
+            <MenuItem key={index} value={user.username}>
+              {user.username}
             </MenuItem>
           ))}
         </Select>

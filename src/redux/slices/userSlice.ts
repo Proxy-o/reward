@@ -28,6 +28,10 @@ const userSlice = createSlice({
         user.pointsToday += points;
       }
     },
+    addUser: (state, action) => {
+      console.log("Adding user", action.payload);
+      state.users.push({ id: state.users.length + 1, ...action.payload });
+    },
   },
   extraReducers: (builder) => {
     builder
@@ -46,6 +50,6 @@ const userSlice = createSlice({
   },
 });
 
-export const { setPointsForUser } = userSlice.actions;
+export const { setPointsForUser, addUser } = userSlice.actions;
 
 export default userSlice.reducer;

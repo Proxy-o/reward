@@ -101,9 +101,9 @@ export default function CustomerPointsList() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {users.map((customer) => (
+            {users.map((customer,index) => (
               <TableRow
-                key={customer.id}
+                key={index}
                 hover
                 sx={{
                   "&:hover": {
