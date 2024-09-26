@@ -25,7 +25,7 @@ const userSlice = createSlice({
       const { id, points } = action.payload;
       const user = state.users.find((user) => user.id === id);
       if (user) {
-        user.pointsToday += points;
+        user.totalPoints += points;
       }
     },
     addUser: (state, action) => {

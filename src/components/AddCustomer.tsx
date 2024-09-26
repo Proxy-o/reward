@@ -31,7 +31,7 @@ export default function AddCustomer() {
       addUser({
         username,
         email,
-        pointsToday: 0,
+        totalPoints: 0,
         pointsRedeemed: 0,
       })
     );

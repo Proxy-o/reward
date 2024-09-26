@@ -101,7 +101,7 @@ export default function CustomerPointsList() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {users.map((customer,index) => (
+            {users.map((customer, index) => (
               <TableRow
                 key={index}
                 hover
@@ -112,7 +112,7 @@ export default function CustomerPointsList() {
                 }}
               >
                 <TableCell>{customer.username}</TableCell>
-                <TableCell align="center">{customer.pointsToday}</TableCell>
+                <TableCell align="center">{customer.totalPoints}</TableCell>
                 <TableCell align="center">{customer.pointsRedeemed}</TableCell>
                 <TableCell align="center">
                   <Button

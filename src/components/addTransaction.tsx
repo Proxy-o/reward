@@ -24,11 +24,11 @@ interface AddTransactionModalProps {
   selectedUser: User | null;
 }
 
-const AddTransactionModal: React.FC<AddTransactionModalProps> = ({
+export default function AddTransactionModal({
   open,
   handleClose,
   selectedUser,
-}) => {
+}: AddTransactionModalProps) {
   const [transactionAmount, setTransactionAmount] = useState<number | null>(
     null
   );
@@ -72,7 +72,9 @@ const AddTransactionModal: React.FC<AddTransactionModalProps> = ({
           sx={{ mt: 2 }}
           type="number"
           value={transactionAmount || ""}
-          onChange={(e) => setTransactionAmount(parseFloat(e.target.value))}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+            setTransactionAmount(parseInt(e.target.value))
+          }
         />
         <Button
           onClick={handleAddTransaction}
@@ -86,6 +88,4 @@ const AddTransactionModal: React.FC<AddTransactionModalProps> = ({
       </Box>
     </Modal>
   );
-};
-
-export default AddTransactionModal;
+}

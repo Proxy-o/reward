@@ -1,6 +1,6 @@
 export interface User {
   id: number;
   username: string;
-  pointsToday: number;
+  totalPoints: number;
   pointsRedeemed: number;
 }
