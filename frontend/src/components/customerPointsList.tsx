@@ -61,7 +61,7 @@ export default function CustomerPointsList() {
         marginBottom={4}
         sx={{ fontWeight: "bold", color: "#3f51b5" }}
       >
-        Customers Points Earned Today
+        Customers Points 
       </Typography>
 
       <TableContainer component={Paper} elevation={6}>
@@ -78,7 +78,7 @@ export default function CustomerPointsList() {
                   textAlign: "center",
                 }}
               >
-                Points Earned Today
+                Total Points
               </TableCell>
               <TableCell
                 sx={{
