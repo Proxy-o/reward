@@ -32,13 +32,13 @@ This diagram illustrates the relationships between customers, transactions, and 
 
 ## Use Case Diagram
 
-![Use Case Diagram](./images/usecase.png)
+![Use Case Diagram](images/usecase.PNG)
 
 This diagram shows the main actions that can be performed by customers and the shop owner (Gunther) in the reward system.
 
 ## Class Diagram
 
-![Class Diagram](./images/class.png)
+![Class Diagram](images/class.PNG)
 
 The class diagram provides an overview of the main classes in our system and their relationships.
 
@@ -46,7 +46,7 @@ The class diagram provides an overview of the main classes in our system and the
 
 ### Making a Purchase
 
-![Sequence Diagram - Make Purchase](./images/seq1.png)
+![Sequence Diagram - Make Purchase](images/seq1.PNG)
 
 This diagram illustrates the process of a customer making a purchase and earning points.
 
