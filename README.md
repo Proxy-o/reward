@@ -26,7 +26,7 @@ The frontend is a single-page application built with React and TypeScript, ensur
 
 ## Data Model
 
-![Data Model Diagram](./images/data.png)
+![Data Model Diagram](images/data.PNG)
 
 This diagram illustrates the relationships between customers, transactions, and rewards in our system.
 
